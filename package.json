@@ -1,6 +1,6 @@
 {
   "name": "@defi-ventures/tokenizer-common",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tokenizer common components",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -11,11 +11,11 @@
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/tokenizer-common/tokenizer-common.js",
   "repository": {
-    "type" : "git",
-    "url" : "git@github.com:defi-ventures/tokenizer-common-wrapper.git"
+    "type": "git",
+    "url": "git@github.com:defi-ventures/tokenizer-common-wrapper.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   },
   "files": [
     "dist/",
@@ -29,7 +29,7 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^1.12.2"
+    "@stencil/core": "^1.17.2"
   },
   "license": "MIT"
 }

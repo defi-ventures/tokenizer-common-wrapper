@@ -1,5 +1,5 @@
 {
-  "name": "@tokenizer/tokenizer-common",
+  "name": "@defi-ventures/tokenizer-common",
   "version": "1.0.0",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",

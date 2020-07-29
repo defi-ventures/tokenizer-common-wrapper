@@ -1,6 +1,6 @@
 {
   "name": "@defi-ventures/tokenizer-common",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Tokenizer common components",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

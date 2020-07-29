@@ -1,6 +1,6 @@
 {
   "name": "@defi-ventures/tokenizer-common",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Tokenizer common components",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -31,5 +31,5 @@
   "devDependencies": {
     "@stencil/core": "^1.17.2"
   },
-  "license": "MIT"
+  "license": "UNLICENSED"
 }

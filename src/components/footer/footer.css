@@ -13,7 +13,6 @@
   background-color: var(--panel-primary-color);
   width: 100%;
   color: #DDD;
-  fill: #DDD;
   font-size: .8rem;
 }
 .footer.fixed {
@@ -32,10 +31,11 @@
   height: var(--footer-height);
   width: var(--footer-height);
 }
-.social a:hover {
-  fill: #BBB;
-}
 .social a svg {
   width: 60%;
   height: 60%;
+  fill: #DDD;
+}
+.social a:hover svg {
+  fill: #BBB;
 }

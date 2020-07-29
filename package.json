@@ -1,5 +1,5 @@
 {
-  "name": "tokenizer-common",
+  "name": "@tokenizer/tokenizer-common",
   "version": "1.0.0",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
@@ -10,6 +10,13 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/tokenizer-common/tokenizer-common.js",
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:defi-ventures/tokenizer-common-wrapper.git"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
+  },
   "files": [
     "dist/",
     "loader/"

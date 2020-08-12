@@ -1,6 +1,6 @@
 {
   "name": "@defi-ventures/tokenizer-common",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Tokenizer common components",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -19,7 +19,8 @@
   },
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "hydrate/"
   ],
   "scripts": {
     "build": "stencil build --docs",

@@ -15,6 +15,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null // disable service workers
-    }
+    },
+    { type: 'dist-hydrate-script' }
   ]
 };

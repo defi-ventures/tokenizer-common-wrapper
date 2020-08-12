@@ -1,0 +1,6 @@
+{
+  "name": "@defi-ventures/tokenizer-common/hydrate",
+  "description": "TokenizerCommon component hydration app.",
+  "main": "index.js",
+  "types": "index.d.ts"
+}

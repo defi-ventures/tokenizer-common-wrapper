@@ -21,6 +21,11 @@
   left: 0;
   right: 0;
 }
+.footer .legend {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .social {
   display: flex;
 }
@@ -30,6 +35,9 @@
   align-items: center;
   height: var(--footer-height);
   width: var(--footer-height);
+}
+.social a span {
+  text-align: center;
 }
 .social a svg {
   width: 60%;

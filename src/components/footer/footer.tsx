@@ -64,7 +64,12 @@ export class Footer {
           fixed: this.fixed,
         }}
       >
-        <span class='legend'>© 2020 Tokenizer Investment Banking Blockchain. All Right Reserved. Powered by Defi Ventures</span>
+        <span
+          class='legend'
+          title='© 2020 Tokenizer Investment Banking Blockchain. All Right Reserved. Powered by Defi Ventures'
+        >
+          © 2020 Tokenizer Investment Banking Blockchain. All Right Reserved. Powered by Defi Ventures
+        </span>
         <div class='social'>
           { this.social.map(social => (
             <a href={ social.href } title={ social.name }><span innerHTML={ social.logo } /></a>

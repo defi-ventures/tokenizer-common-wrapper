@@ -4,6 +4,7 @@ export type App  = {
   title: string,
   description: string,
   logo: string,
+  logoAlt: string,
   url: string,
 };
 
@@ -47,7 +48,7 @@ export class AppsMenu {
       <div class='apps-menu'>
         { this.apps.map(app => (
           <a class='app-menu-item' href={ app.url }>
-          <div class='logo'><img src={ `data:image/png;base64,${app.logo}` }/></div>
+          <div class='logo'><img src={ `data:image/png;base64,${app.logo}` } alt={ app.logoAlt }/></div>
           <div class='details'>
             <span class='title'>{ app.title }</span>
             <span class='description'>{ app.description }</span>

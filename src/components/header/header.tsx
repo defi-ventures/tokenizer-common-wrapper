@@ -39,7 +39,7 @@ export class Header {
           this.apps = response.filter(({active}) => active).map(tile => ({
             title: tile.title,
             description: tile.description,
-            logo: tile.icon.url,
+            logo: `https://cms.tokenizer.cc${tile.icon.url}`,
             logoAlt: tile.icon.alternativeText,
             url: tile.url,
           }));

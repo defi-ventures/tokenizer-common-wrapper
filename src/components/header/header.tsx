@@ -24,7 +24,7 @@ type Tile = {
 export class Header {
   @Prop() sideMenu: boolean = false;
   @Prop() logoHref: string = 'https://www.tokenizer.cc'
-  @Prop() apps: App[];
+  @Prop() apps: App[] = [];
   @Prop() pageTitle: string;
   @Event() sideMenuOpen: EventEmitter<boolean>;
 
@@ -32,7 +32,7 @@ export class Header {
   @State() isSideMenuOpen = false;
 
   componentWillLoad() {
-    if (!this.apps) {
+    if (this.apps.length === 0) {
       fetch('https://cms.tokenizer.cc/tiles')
         .then((response: Response) => response.json())
         .then((response: Tile[]) => {

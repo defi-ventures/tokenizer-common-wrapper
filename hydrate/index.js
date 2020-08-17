@@ -5436,9 +5436,8 @@ class Header {
         this.sideMenuOpen.emit(this.isSideMenuOpen);
     }
     render() {
-        var _a;
         const appMenu = this.isAppsMenuOpen && (h("tok-apps-menu", { apps: this.apps }));
-        const appMenuButton = ((_a = this.apps) === null || _a === void 0 ? void 0 : _a.length) && (h("div", { class: {
+        const appMenuButton = (h("div", { class: {
                 'flex center header-item square apps-menu': true,
                 open: this.isAppsMenuOpen,
             }, innerHTML: appsMenu, onClick: this.appsMenuClickHandler.bind(this) }));

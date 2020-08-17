@@ -66,7 +66,7 @@ export class Header {
       <tok-apps-menu apps={ this.apps }/>
     );
 
-    const appMenuButton = this.apps?.length && (
+    const appMenuButton = (
       <div
         class={{
           'flex center header-item square apps-menu': true,

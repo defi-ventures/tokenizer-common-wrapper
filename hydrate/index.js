@@ -5292,7 +5292,7 @@ class AppsMenu {
         this.close.emit();
     }
     render() {
-        return (h("div", { class: 'apps-menu' }, this.apps.map(app => (h("a", { class: 'app-menu-item', href: app.url }, h("div", { class: 'logo' }, h("img", { src: `data:image/png;base64,${app.logo}` })), h("div", { class: 'details' }, h("span", { class: 'title' }, app.title), h("span", { class: 'description' }, app.description)))))));
+        return (h("div", { class: 'apps-menu' }, this.apps.map(app => (h("a", { class: 'app-menu-item', href: app.url }, h("div", { class: 'logo' }, h("img", { src: app.logo, alt: app.logoAlt })), h("div", { class: 'details' }, h("span", { class: 'title' }, app.title), h("span", { class: 'description' }, app.description)))))));
     }
     get el() { return getElement(this); }
     static get style() { return appsMenuCss; }
@@ -5406,18 +5406,19 @@ class Header {
         this.sideMenuOpen = createEvent(this, "sideMenuOpen", 7);
         this.sideMenu = false;
         this.logoHref = 'https://www.tokenizer.cc';
+        this.apps = [];
         this.isAppsMenuOpen = false;
         this.isSideMenuOpen = false;
     }
     componentWillLoad() {
-        if (!this.apps) {
+        if (this.apps.length === 0) {
             fetch('https://cms.tokenizer.cc/tiles')
                 .then((response) => response.json())
                 .then((response) => {
                 this.apps = response.filter(({ active }) => active).map(tile => ({
                     title: tile.title,
                     description: tile.description,
-                    logo: tile.icon.url,
+                    logo: `https://cms.tokenizer.cc${tile.icon.url}`,
                     logoAlt: tile.icon.alternativeText,
                     url: tile.url,
                 }));

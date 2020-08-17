@@ -9,7 +9,7 @@
 
 | Property    | Attribute    | Description | Type      | Default                      |
 | ----------- | ------------ | ----------- | --------- | ---------------------------- |
-| `apps`      | --           |             | `App[]`   | `undefined`                  |
+| `apps`      | --           |             | `App[]`   | `[]`                         |
 | `logoHref`  | `logo-href`  |             | `string`  | `'https://www.tokenizer.cc'` |
 | `pageTitle` | `page-title` |             | `string`  | `undefined`                  |
 | `sideMenu`  | `side-menu`  |             | `boolean` | `false`                      |

@@ -5563,7 +5563,7 @@ class Header {
     }; }
 }
 
-const mainCss = "tok-main>div{overflow-y:auto;position:absolute;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;bottom:0;left:0;right:0}tok-main>div.footer-fixed{bottom:var(--footer-height)}tok-main>div.with-header{top:var(--header-height)}tok-main>div.with-apps-side-menu{left:var(--apps-side-menu-width)}@media (max-width: 600px){tok-main>div.with-apps-side-menu{left:var(--apps-side-menu-mobile-width)}}";
+const mainCss = "tok-main>div{overflow-y:auto;position:absolute;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;top:0;bottom:0;left:0;right:0}tok-main>div.footer-fixed{bottom:var(--footer-height)}tok-main>div.with-header{top:var(--header-height)}tok-main>div.with-apps-side-menu{left:var(--apps-side-menu-width)}@media (max-width: 600px){tok-main>div.with-apps-side-menu{left:var(--apps-side-menu-mobile-width)}}";
 
 class Main {
     constructor(hostRef) {

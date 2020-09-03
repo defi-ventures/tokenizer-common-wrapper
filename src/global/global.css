@@ -1,8 +1,9 @@
 @import './variables.css';
+@import './colors.css';
 
 html {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Red Hat Text', sans-serif;
 }
 
 body {

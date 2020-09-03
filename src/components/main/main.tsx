@@ -6,7 +6,9 @@ import { Component, h, Listen, State } from '@stencil/core';
   shadow: false
 })
 export class Main {
-  @State() footerFixed: boolean;
+  @State() footerFixed: boolean = false;
+  @State() hasHeader: boolean = false;
+  @State() hasAppsSideMenu: boolean = true;
 
   @Listen('footerFixed')
   footerFixedHandler(fixed: CustomEvent<boolean>) {
@@ -14,6 +16,11 @@ export class Main {
     const sideMenu = document.querySelector('tok-side-menu');
     if (sideMenu) {
       sideMenu.footerFixed(fixed.detail);  
+    }
+
+    const appsSideMenu = document.querySelector('tok-apps-side-menu');
+    if (appsSideMenu) {
+      appsSideMenu.footerFixed(fixed.detail);  
     }
   }  
 
@@ -30,6 +37,8 @@ export class Main {
       <div
         class={{
           'footer-fixed': this.footerFixed,
+          'with-header': this.hasHeader,
+          'with-apps-side-menu': this.hasAppsSideMenu,
         }}
       >
         <slot />

@@ -4540,7 +4540,7 @@ function hydrateFactory($stencilWindow, $stencilHydrateOpts, $stencilHydrateResu
 
 
 const NAMESPACE = 'tokenizer-common';
-const BUILD = /* tokenizer-common */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: true, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: true, dynamicImportShim: false, element: false, event: true, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: true, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: false, vdomKey: false, vdomListener: true, vdomPropOrAttr: true, vdomRef: false, vdomRender: true, vdomStyle: false, vdomText: true, vdomXlink: false, watchCallback: false };
+const BUILD = /* tokenizer-common */ { allRenderFn: true, appendChildSlotFix: false, asyncLoading: true, attachStyles: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: true, constructableCSS: false, cssAnnotations: true, cssVarShim: false, devTools: false, disconnectedCallback: true, dynamicImportShim: false, element: false, event: true, hasRenderFn: true, hostListener: true, hostListenerTarget: false, hostListenerTargetBody: false, hostListenerTargetDocument: false, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: true, hydrateServerSide: true, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: false, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: true, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: false, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: true, shadowDomShim: true, slot: true, slotChildNodesFix: false, slotRelocation: true, state: true, style: true, svg: false, taskQueue: true, updatable: true, vdomAttribute: true, vdomClass: true, vdomFunctional: true, vdomKey: true, vdomListener: true, vdomPropOrAttr: true, vdomRef: true, vdomRender: true, vdomStyle: true, vdomText: true, vdomXlink: true, watchCallback: false };
 
 function componentOnReady() {
  return getHostRef(this).$onReadyPromise$;
@@ -4723,7 +4723,7 @@ const addHostEventListeners = (e, t, o, n) => {
  }));
 }, hostListenerProxy = (e, t) => o => {
   256 & e.$flags$ ? e.$lazyInstance$[t](o) : (e.$queuedListeners$ = e.$queuedListeners$ || []).push([ t, o ]) ;
-}, hostListenerOpts = e => 0 != (2 & e);
+}, hostListenerOpts = e => 0 != (2 & e), XLINK_NS = "http://www.w3.org/1999/xlink";
 
 const createTime = (e, t = "") => {
  return () => {};
@@ -4752,17 +4752,20 @@ const createTime = (e, t = "") => {
  s();
 }, getScopeId = (e, t) => "sc-" + ( e.$tagName$), EMPTY_OBJ = {}, isComplexType = e => "object" == (e = typeof e) || "function" === e, IS_DENO_ENV = "undefined" != typeof Deno, IS_NODE_ENV = !(IS_DENO_ENV || "undefined" == typeof global || "function" != typeof require || !global.process || "string" != typeof __filename || global.origin && "string" == typeof global.origin), h = (IS_DENO_ENV && Deno.build.os, IS_NODE_ENV ? process.cwd : IS_DENO_ENV && Deno.cwd, 
 IS_NODE_ENV ? process.exit : IS_DENO_ENV && Deno.exit, (e, t, ...o) => {
- let n = null, l = null, a = !1, r = !1, i = [];
+ let n = null, s = null, l = null, a = !1, r = !1, i = [];
  const d = t => {
   for (let o = 0; o < t.length; o++) n = t[o], Array.isArray(n) ? d(n) : null != n && "boolean" != typeof n && ((a = "function" != typeof e && !isComplexType(n)) ? n = String(n) : BUILD.isDev  , 
   a && r ? i[i.length - 1].$text$ += n : i.push(a ? newVNode(null, n) : n), r = a);
  };
- if (d(o), t && ( t.name && (l = t.name), BUILD.vdomClass)) {
+ if (d(o), t && ( t.key && (s = t.key), 
+  t.name && (l = t.name), BUILD.vdomClass)) {
   const e = t.className || t.class;
   e && (t.class = "object" != typeof e ? e : Object.keys(e).filter(t => e[t]).join(" "));
  }
+ if ( "function" == typeof e) return e(null === t ? {} : t, i, vdomFnUtils);
  const c = newVNode(e, null);
- return c.$attrs$ = t, i.length > 0 && (c.$children$ = i),  (c.$name$ = l), c;
+ return c.$attrs$ = t, i.length > 0 && (c.$children$ = i),  (c.$key$ = s), 
+  (c.$name$ = l), c;
 }), newVNode = (e, t) => {
  const o = {
   $flags$: 0,
@@ -4771,14 +4774,36 @@ IS_NODE_ENV ? process.exit : IS_DENO_ENV && Deno.exit, (e, t, ...o) => {
   $elm$: null,
   $children$: null
  };
- return  (o.$attrs$ = null),  (o.$name$ = null), o;
-}, Host = {}, isHost = e => e && e.$tag$ === Host, setAccessor = (e, t, o, n, s, l) => {
+ return  (o.$attrs$ = null),  (o.$key$ = null), 
+  (o.$name$ = null), o;
+}, Host = {}, isHost = e => e && e.$tag$ === Host, vdomFnUtils = {
+ forEach: (e, t) => e.map(convertToPublic).forEach(t),
+ map: (e, t) => e.map(convertToPublic).map(t).map(convertToPrivate)
+}, convertToPublic = e => ({
+ vattrs: e.$attrs$,
+ vchildren: e.$children$,
+ vkey: e.$key$,
+ vname: e.$name$,
+ vtag: e.$tag$,
+ vtext: e.$text$
+}), convertToPrivate = e => {
+ if ("function" == typeof e.vtag) {
+  const t = Object.assign({}, e.vattrs);
+  return e.vkey && (t.key = e.vkey), e.vname && (t.name = e.vname), h(e.vtag, t, ...e.vchildren || []);
+ }
+ const t = newVNode(e.vtag, e.vtext);
+ return t.$attrs$ = e.vattrs, t.$children$ = e.vchildren, t.$key$ = e.vkey, t.$name$ = e.vname, 
+ t;
+}, setAccessor = (e, t, o, n, s, l) => {
  if (o !== n) {
   let a = isMemberInElement(e, t), r = t.toLowerCase();
   if ( "class" === t) {
    const t = e.classList, s = parseClassList(o), l = parseClassList(n);
    t.remove(...s.filter(e => e && !l.includes(e))), t.add(...l.filter(e => e && !s.includes(e)));
-  } else if ( ( a ) || "o" !== t[0] || "n" !== t[1]) {
+  } else if ( "style" === t) {
+   for (const t in o) n && null != n[t] || ( e.style[t] = "");
+   for (const t in n) o && n[t] === o[t] || ( e.style[t] = n[t]);
+  } else if ( "key" === t) ; else if ( "ref" === t) n && n(e); else if ( ( a ) || "o" !== t[0] || "n" !== t[1]) {
    {
     const i = isComplexType(n);
     if ((a || i && null !== n) && !s) try {
@@ -4787,8 +4812,9 @@ IS_NODE_ENV ? process.exit : IS_DENO_ENV && Deno.exit, (e, t, ...o) => {
       "list" === t ? a = !1 : null != o && e[t] == s || (e[t] = s);
      }
     } catch (e) {}
-    null == n || !1 === n ? !1 === n && "" !== e.getAttribute(t) || ( e.removeAttribute(t)) : (!a || 4 & l || s) && !i && (n = !0 === n ? "" : n, 
-     e.setAttribute(t, n));
+    let d = !1;
+     r !== (r = r.replace(/^xlink\:?/, "")) && (t = r, d = !0), null == n || !1 === n ? !1 === n && "" !== e.getAttribute(t) || ( d ? e.removeAttributeNS(XLINK_NS, t) : e.removeAttribute(t)) : (!a || 4 & l || s) && !i && (n = !0 === n ? "" : n, 
+     d ? e.setAttributeNS(XLINK_NS, t, n) : e.setAttribute(t, n));
    }
   } else t = "-" === t[2] ? t.slice(3) : isMemberInElement(win, r) ? r.slice(2) : r[2] + t.slice(3), 
   o && plt.rel(e, t, o, !1), n && plt.ael(e, t, n, !1);
@@ -4829,19 +4855,24 @@ const createElm = (e, t, o, n) => {
  for ( r.shadowRoot && r.tagName === hostTagName && (r = r.shadowRoot); s <= l; ++s) n[s] && (a = createElm(null, o, s, e), 
  a && (n[s].$elm$ = a, r.insertBefore(a,  referenceNode(t) )));
 }, removeVnodes = (e, t, o, n, s) => {
- for (;t <= o; ++t) (n = e[t]) && (s = n.$elm$,  (checkSlotFallbackVisibility = !0, 
+ for (;t <= o; ++t) (n = e[t]) && (s = n.$elm$, callNodeRefs(n),  (checkSlotFallbackVisibility = !0, 
  s["s-ol"] ? s["s-ol"].remove() : putBackInOriginalLocation(s, !0)), s.remove());
-}, isSameVnode = (e, t) => e.$tag$ === t.$tag$ && ( "slot" === e.$tag$ ? e.$name$ === t.$name$ : !BUILD.vdomKey ), referenceNode = e => e && e["s-ol"] || e, parentReferenceNode = e => (e["s-ol"] ? e["s-ol"] : e).parentNode, patch = (e, t) => {
+}, isSameVnode = (e, t) => e.$tag$ === t.$tag$ && ( "slot" === e.$tag$ ? e.$name$ === t.$name$ :  e.$key$ === t.$key$), referenceNode = e => e && e["s-ol"] || e, parentReferenceNode = e => (e["s-ol"] ? e["s-ol"] : e).parentNode, patch = (e, t) => {
  const o = t.$elm$ = e.$elm$, n = e.$children$, s = t.$children$, l = t.$tag$, a = t.$text$;
  let r;
   null !== a ?  (r = o["s-cr"]) ? r.parentNode.textContent = a :  e.$text$ !== a && (o.data = a) : ( ( "slot" === l || updateElement(e, t, isSvgMode)), 
   null !== n && null !== s ? ((e, t, o, n) => {
-  let s, a = 0, r = 0, c = t.length - 1, $ = t[0], m = t[c], p = n.length - 1, u = n[0], h = n[p];
+  let s, l, a = 0, r = 0, i = 0, d = 0, c = t.length - 1, $ = t[0], m = t[c], p = n.length - 1, u = n[0], h = n[p];
   for (;a <= c && r <= p; ) if (null == $) $ = t[++a]; else if (null == m) m = t[--c]; else if (null == u) u = n[++r]; else if (null == h) h = n[--p]; else if (isSameVnode($, u)) patch($, u), 
   $ = t[++a], u = n[++r]; else if (isSameVnode(m, h)) patch(m, h), m = t[--c], h = n[--p]; else if (isSameVnode($, h))  "slot" !== $.$tag$ && "slot" !== h.$tag$ || putBackInOriginalLocation($.$elm$.parentNode, !1), 
   patch($, h), e.insertBefore($.$elm$, m.$elm$.nextSibling), $ = t[++a], h = n[--p]; else if (isSameVnode(m, u))  "slot" !== $.$tag$ && "slot" !== h.$tag$ || putBackInOriginalLocation(m.$elm$.parentNode, !1), 
   patch(m, u), e.insertBefore(m.$elm$, $.$elm$), m = t[--c], u = n[++r]; else {
-    (s = createElm(t && t[r], o, r, e), u = n[++r]), 
+   if (i = -1, BUILD.vdomKey) for (d = a; d <= c; ++d) if (t[d] && null !== t[d].$key$ && t[d].$key$ === u.$key$) {
+    i = d;
+    break;
+   }
+    i >= 0 ? (l = t[i], l.$tag$ !== u.$tag$ ? s = createElm(t && t[r], o, i, e) : (patch(l, u), 
+   t[i] = void 0, s = l.$elm$), u = n[++r]) : (s = createElm(t && t[r], o, r, e), u = n[++r]), 
    s && ( parentReferenceNode($.$elm$).insertBefore(s, referenceNode($.$elm$)) );
   }
   a > c ? addVnodes(e, null == n[p + 1] ? null : n[p + 1].$elm$, o, n, r, p) :  r > p && removeVnodes(t, a, c);
@@ -4879,7 +4910,9 @@ const createElm = (e, t, o, n) => {
   }));
   1 === t.nodeType && relocateSlotContent(t);
  }
-}, isNodeLocatedInSlot = (e, t) => 1 === e.nodeType ? null === e.getAttribute("slot") && "" === t || e.getAttribute("slot") === t : e["s-sn"] === t || "" === t, renderVdom = (e, t) => {
+}, isNodeLocatedInSlot = (e, t) => 1 === e.nodeType ? null === e.getAttribute("slot") && "" === t || e.getAttribute("slot") === t : e["s-sn"] === t || "" === t, callNodeRefs = e => {
+  (e.$attrs$ && e.$attrs$.ref && e.$attrs$.ref(null), e.$children$ && e.$children$.map(callNodeRefs));
+}, renderVdom = (e, t) => {
  const o = e.$hostElement$, s = e.$vnode$ || newVNode(null, null), l = isHost(t) ? t : h(null, null, t);
  if (hostTagName = o.tagName, BUILD.isDev  ) ;
  if (l.$tag$ = null, l.$flags$ |= 4, e.$vnode$ = l, l.$elm$ = s.$elm$ =  o.shadowRoot || o, 
@@ -5308,6 +5341,71 @@ class AppsMenu {
     }; }
 }
 
+const API_URL = 'https://cms.tokenizer.cc';
+const IMAGE_BASE_URL = API_URL;
+const TILES_URL = `${API_URL}/tiles`;
+const COMMON_ASM_URL = `${API_URL}/tokenizer-common`;
+
+const appsSideMenuCss = "/*!@**/*.sc-tok-apps-side-menu{-webkit-box-sizing:border-box;box-sizing:border-box}/*!@.apps-side-menu*/.apps-side-menu.sc-tok-apps-side-menu{position:fixed;top:0;left:0;bottom:0;width:var(--apps-side-menu-width);background-color:var(--asm-bg);z-index:1000;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:start;justify-content:flex-start;-ms-flex-align:center;align-items:center;padding:30px 0;font-size:0.875rem}/*!@.apps-side-menu .logo*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu{text-decoration:none;cursor:pointer}/*!@.apps-side-menu .logo img*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu img.sc-tok-apps-side-menu{width:42px}/*!@.apps-side-menu .apps-container*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu{width:100%;margin-top:46px;overflow-y:auto}/*!@.apps-side-menu .apps-container .app-item,\n.apps-side-menu .apps-container .separator*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu{width:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;padding:8px 0}/*!@.apps-side-menu .apps-container .app-item*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu{color:var(--asm-app-text);text-decoration:none;cursor:pointer}/*!@.apps-side-menu .apps-container .app-item.active,\n.apps-side-menu .apps-container .app-item.disabled*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu{cursor:default}/*!@.apps-side-menu .apps-container .app-item.disabled*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu{color:var(--grey-dark)}/*!@.apps-side-menu .apps-container .app-item .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{border-radius:4px;width:42px;height:42px;padding:6px;margin-bottom:4px;background-color:var(--asm-app-bg)}/*!@.apps-side-menu .apps-container .app-item .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{height:100%;width:100%;background-color:var(--asm-app-text)}/*!@.apps-side-menu .apps-container .app-item:hover div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover div.sc-tok-apps-side-menu{color:var(--asm-app-text-hover)}/*!@.apps-side-menu .apps-container .app-item:hover .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-hover)}/*!@.apps-side-menu .apps-container .app-item:hover .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-hover)}/*!@.apps-side-menu .apps-container .app-item.active div,\n.apps-side-menu .apps-container .app-item.active:hover div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu div.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover div.sc-tok-apps-side-menu{color:var(--asm-app-text-active)}/*!@.apps-side-menu .apps-container .app-item.active .app-icon,\n.apps-side-menu .apps-container .app-item.active:hover .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-active)}/*!@.apps-side-menu .apps-container .app-item.active .app-icon div,\n.apps-side-menu .apps-container .app-item.active:hover .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-active)}/*!@.apps-side-menu .apps-container .app-item.disabled div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{color:var(--asm-app-text-disabled)}/*!@.apps-side-menu .apps-container .app-item.disabled .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-disabled)}/*!@.apps-side-menu .apps-container .app-item.disabled .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-disabled)}/*!@.apps-side-menu .apps-container .separator div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{width:100%;border-top:1px solid var(--asm-separator)}@media (max-width: 600px){/*!@.apps-side-menu*/.apps-side-menu.sc-tok-apps-side-menu{width:var(--apps-side-menu-mobile-width);padding:16px 0;font-size:0.625rem}/*!@.apps-side-menu .logo img*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu img.sc-tok-apps-side-menu{width:36px}/*!@.apps-side-menu .apps-container .app-item,\n  .apps-side-menu .apps-container .separator*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu{padding:7px 0}/*!@.apps-side-menu .apps-container*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu{margin-top:34px}/*!@.apps-side-menu .apps-container .app-item .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{width:38px;height:38px;padding:5px;margin-bottom:2px}}/*!@.apps-side-menu.footer-fixed*/.apps-side-menu.footer-fixed.sc-tok-apps-side-menu{bottom:var(--footer-height)}";
+
+const appSort = (a, b) => a.position - b.position;
+const Separator = () => (h("div", { class: 'separator' }, h("div", null)));
+const AppItem = ({ title, icon, active, url, }) => (h("a", { class: {
+        'app-item': true,
+        'disabled': !active,
+        'active': url.includes(window.location.host),
+    }, href: url.includes(window.location.host) ? '#' : url }, h("div", { class: 'app-icon' }, h("div", { style: {
+        'mask': `url(${IMAGE_BASE_URL}${icon.url}) center center / contain no-repeat`,
+        '-webkit-mask': `url(${IMAGE_BASE_URL}${icon.url}) center center / contain no-repeat`,
+    } })), h("div", { class: 'app-title' }, title)));
+class AppsSideMenu {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+        this.apps = [];
+        this.isFooterFixed = false;
+        this.showDisabled = true;
+    }
+    async footerFixed(fixed) {
+        this.isFooterFixed = fixed;
+    }
+    componentWillLoad() {
+        fetch(TILES_URL)
+            .then((response) => response.json())
+            .then((response) => {
+            this.apps = response.filter(({ active }) => this.showDisabled || active);
+        });
+        fetch(COMMON_ASM_URL)
+            .then((response) => response.json())
+            .then((response) => {
+            this.common = Object.assign({}, response);
+        });
+    }
+    render() {
+        const logo = this.common && this.common.logo;
+        return (h("div", { class: {
+                'apps-side-menu': true,
+                'footer-fixed': this.isFooterFixed,
+            } }, logo && (h("a", { href: logo.caption, class: 'logo', title: logo.name }, h("img", { alt: logo.alternativeText, src: `${IMAGE_BASE_URL}${logo.url}` }))), h("div", { class: 'apps-container' }, this.apps.sort(appSort).map(app => app.separator
+            ? h(Separator, null)
+            : h(AppItem, Object.assign({}, app)))), h("div", { class: 'profile-container' })));
+    }
+    static get style() { return appsSideMenuCss; }
+    static get cmpMeta() { return {
+        "$flags$": 9,
+        "$tagName$": "tok-apps-side-menu",
+        "$members$": {
+            "showDisabled": [4, "show-disabled"],
+            "apps": [32],
+            "common": [32],
+            "isFooterFixed": [32],
+            "footerFixed": [64]
+        },
+        "$listeners$": undefined,
+        "$lazyBundleId$": "-",
+        "$attrsToReflect$": []
+    }; }
+}
+
 const contentCss = "tok-content{display:block;-ms-flex-positive:1;flex-grow:1;width:100%;position:relative}";
 
 class Content {
@@ -5370,7 +5468,6 @@ class Footer {
         this.social = defaultSocial;
     }
     connectedCallback() {
-        console.log(this.fixed);
         this.footerFixed.emit(this.fixed);
     }
     render() {
@@ -5466,17 +5563,24 @@ class Header {
     }; }
 }
 
-const mainCss = "tok-main>div{overflow-y:auto;position:absolute;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;top:var(--header-height);bottom:0;left:0;right:0}tok-main>div.footer-fixed{bottom:var(--footer-height)}";
+const mainCss = "tok-main>div{overflow-y:auto;position:absolute;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;bottom:0;left:0;right:0}tok-main>div.footer-fixed{bottom:var(--footer-height)}tok-main>div.with-header{top:var(--header-height)}tok-main>div.with-apps-side-menu{left:var(--apps-side-menu-width)}@media (min-width: 600px){tok-main>div.with-apps-side-menu{left:var(--apps-side-menu-mobile-width)}}";
 
 class Main {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.footerFixed = false;
+        this.hasHeader = false;
+        this.hasAppsSideMenu = true;
     }
     footerFixedHandler(fixed) {
         this.footerFixed = fixed.detail;
         const sideMenu = document.querySelector('tok-side-menu');
         if (sideMenu) {
             sideMenu.footerFixed(fixed.detail);
+        }
+        const appsSideMenu = document.querySelector('tok-apps-side-menu');
+        if (appsSideMenu) {
+            appsSideMenu.footerFixed(fixed.detail);
         }
     }
     sideMenuOpenHandler(open) {
@@ -5488,6 +5592,8 @@ class Main {
     render() {
         return (h("div", { class: {
                 'footer-fixed': this.footerFixed,
+                'with-header': this.hasHeader,
+                'with-apps-side-menu': this.hasAppsSideMenu,
             } }, h("slot", null)));
     }
     static get style() { return mainCss; }
@@ -5495,7 +5601,9 @@ class Main {
         "$flags$": 4,
         "$tagName$": "tok-main",
         "$members$": {
-            "footerFixed": [32]
+            "footerFixed": [32],
+            "hasHeader": [32],
+            "hasAppsSideMenu": [32]
         },
         "$listeners$": [[0, "footerFixed", "footerFixedHandler"], [0, "sideMenuOpen", "sideMenuOpenHandler"]],
         "$lazyBundleId$": "-",
@@ -5544,6 +5652,7 @@ class SideMenu {
 
 registerComponents([
   AppsMenu,
+  AppsSideMenu,
   Content,
   Footer,
   Header,

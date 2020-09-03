@@ -1,0 +1,30 @@
+:root {
+  /* design system */
+  --primary: #0A7CFF;
+  --text: #121212;
+  --white: #FFFFFF;
+  --main-bg: #F9F9F9;
+  --secondary: #00A6FB;
+  --primary2: #0E71FB;
+  --grey-dark: #5B6980;
+  --grey-light: #A0AEC0;
+  
+  /* apps side menu [asm] */
+  --asm-bg: #0F1A39;
+  --asm-arrow-text: var(--white);
+  --asm-arrow-bg: var(--grey-dark);
+  
+  --asm-app-text: var(--grey-light);
+  --asm-app-bg: transparent;
+  
+  --asm-app-text-active: var(--white);
+  --asm-app-bg-active: var(--grey-dark);
+
+  --asm-app-text-hover: var(--white);
+  --asm-app-bg-hover: var(--grey-dark);
+  
+  --asm-app-text-disabled: var(--grey-dark);
+  --asm-app-bg-disabled: transparent;
+
+  --asm-separator: var(--grey-dark);
+}

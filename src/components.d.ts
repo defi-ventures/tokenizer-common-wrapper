@@ -12,6 +12,10 @@ export namespace Components {
     interface TokAppsMenu {
         "apps": App[];
     }
+    interface TokAppsSideMenu {
+        "footerFixed": (fixed: boolean) => Promise<void>;
+        "showDisabled": boolean;
+    }
     interface TokContent {
     }
     interface TokFooter {
@@ -37,6 +41,12 @@ declare global {
     var HTMLTokAppsMenuElement: {
         prototype: HTMLTokAppsMenuElement;
         new (): HTMLTokAppsMenuElement;
+    };
+    interface HTMLTokAppsSideMenuElement extends Components.TokAppsSideMenu, HTMLStencilElement {
+    }
+    var HTMLTokAppsSideMenuElement: {
+        prototype: HTMLTokAppsSideMenuElement;
+        new (): HTMLTokAppsSideMenuElement;
     };
     interface HTMLTokContentElement extends Components.TokContent, HTMLStencilElement {
     }
@@ -70,6 +80,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "tok-apps-menu": HTMLTokAppsMenuElement;
+        "tok-apps-side-menu": HTMLTokAppsSideMenuElement;
         "tok-content": HTMLTokContentElement;
         "tok-footer": HTMLTokFooterElement;
         "tok-header": HTMLTokHeaderElement;
@@ -81,6 +92,9 @@ declare namespace LocalJSX {
     interface TokAppsMenu {
         "apps"?: App[];
         "onClose"?: (event: CustomEvent<void>) => void;
+    }
+    interface TokAppsSideMenu {
+        "showDisabled"?: boolean;
     }
     interface TokContent {
     }
@@ -102,6 +116,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "tok-apps-menu": TokAppsMenu;
+        "tok-apps-side-menu": TokAppsSideMenu;
         "tok-content": TokContent;
         "tok-footer": TokFooter;
         "tok-header": TokHeader;
@@ -114,6 +129,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "tok-apps-menu": LocalJSX.TokAppsMenu & JSXBase.HTMLAttributes<HTMLTokAppsMenuElement>;
+            "tok-apps-side-menu": LocalJSX.TokAppsSideMenu & JSXBase.HTMLAttributes<HTMLTokAppsSideMenuElement>;
             "tok-content": LocalJSX.TokContent & JSXBase.HTMLAttributes<HTMLTokContentElement>;
             "tok-footer": LocalJSX.TokFooter & JSXBase.HTMLAttributes<HTMLTokFooterElement>;
             "tok-header": LocalJSX.TokHeader & JSXBase.HTMLAttributes<HTMLTokHeaderElement>;

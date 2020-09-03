@@ -52,7 +52,6 @@ export class Footer {
   @Event() footerFixed: EventEmitter<boolean>;
 
   connectedCallback() {
-    console.log(this.fixed);
     this.footerFixed.emit(this.fixed);
   }
 

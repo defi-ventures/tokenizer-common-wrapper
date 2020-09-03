@@ -1,10 +1,8 @@
 :root {
-  /* colors */
-  --panel-primary-color: #202123;
-  --panel-selected-color: #333;
-  --panel-hover-color: #666;
-
   /* sizes */
   --header-height: 60px;
   --footer-height: 40px;
+  
+  --apps-side-menu-width: 92px;
+  --apps-side-menu-mobile-width: 62px;
 }

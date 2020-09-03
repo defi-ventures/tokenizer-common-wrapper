@@ -5601,9 +5601,9 @@ class Main {
         "$flags$": 4,
         "$tagName$": "tok-main",
         "$members$": {
-            "footerFixed": [32],
-            "hasHeader": [32],
-            "hasAppsSideMenu": [32]
+            "hasHeader": [4, "has-header"],
+            "hasAppsSideMenu": [4, "has-apps-side-menu"],
+            "footerFixed": [32]
         },
         "$listeners$": [[0, "footerFixed", "footerFixedHandler"], [0, "sideMenuOpen", "sideMenuOpenHandler"]],
         "$lazyBundleId$": "-",

@@ -29,6 +29,8 @@ export namespace Components {
         "sideMenu": boolean;
     }
     interface TokMain {
+        "hasAppsSideMenu": boolean;
+        "hasHeader": boolean;
     }
     interface TokSideMenu {
         "footerFixed": (fixed: boolean) => Promise<void>;
@@ -111,6 +113,8 @@ declare namespace LocalJSX {
         "sideMenu"?: boolean;
     }
     interface TokMain {
+        "hasAppsSideMenu"?: boolean;
+        "hasHeader"?: boolean;
     }
     interface TokSideMenu {
     }

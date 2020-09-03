@@ -1,4 +1,4 @@
-import { Component, h, Listen, State } from '@stencil/core';
+import { Component, h, Listen, State, Prop } from '@stencil/core';
 
 @Component({
   tag: 'tok-main',
@@ -7,8 +7,9 @@ import { Component, h, Listen, State } from '@stencil/core';
 })
 export class Main {
   @State() footerFixed: boolean = false;
-  @State() hasHeader: boolean = false;
-  @State() hasAppsSideMenu: boolean = true;
+  
+  @Prop() hasHeader: boolean = false;
+  @Prop() hasAppsSideMenu: boolean = true;
 
   @Listen('footerFixed')
   footerFixedHandler(fixed: CustomEvent<boolean>) {

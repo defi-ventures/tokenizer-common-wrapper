@@ -5345,8 +5345,9 @@ const API_URL = 'https://cms.tokenizer.cc';
 const IMAGE_BASE_URL = API_URL;
 const TILES_URL = `${API_URL}/tiles`;
 const COMMON_ASM_URL = `${API_URL}/tokenizer-common`;
+const COMMON_FOOTER_URL = `${API_URL}/common-footer`;
 
-const appsSideMenuCss = "/*!@**/*.sc-tok-apps-side-menu{-webkit-box-sizing:border-box;box-sizing:border-box}/*!@.apps-side-menu*/.apps-side-menu.sc-tok-apps-side-menu{position:fixed;top:0;left:0;bottom:0;width:var(--apps-side-menu-width);background-color:var(--asm-bg);z-index:1000;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:start;justify-content:flex-start;-ms-flex-align:center;align-items:center;padding:30px 0;font-size:0.875rem}/*!@.apps-side-menu .logo*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu{text-decoration:none;cursor:pointer}/*!@.apps-side-menu .logo img*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu img.sc-tok-apps-side-menu{width:42px}/*!@.apps-side-menu .apps-container*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu{width:100%;margin-top:46px;overflow-y:auto}/*!@.apps-side-menu .apps-container .app-item,\n.apps-side-menu .apps-container .separator*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu{width:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;padding:8px 0}/*!@.apps-side-menu .apps-container .app-item*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu{color:var(--asm-app-text);text-decoration:none;cursor:pointer}/*!@.apps-side-menu .apps-container .app-item.active,\n.apps-side-menu .apps-container .app-item.disabled*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu{cursor:default}/*!@.apps-side-menu .apps-container .app-item.disabled*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu{color:var(--grey-dark)}/*!@.apps-side-menu .apps-container .app-item .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{border-radius:4px;width:42px;height:42px;padding:6px;margin-bottom:4px;background-color:var(--asm-app-bg)}/*!@.apps-side-menu .apps-container .app-item .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{height:100%;width:100%;background-color:var(--asm-app-text)}/*!@.apps-side-menu .apps-container .app-item:hover div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover div.sc-tok-apps-side-menu{color:var(--asm-app-text-hover)}/*!@.apps-side-menu .apps-container .app-item:hover .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-hover)}/*!@.apps-side-menu .apps-container .app-item:hover .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-hover)}/*!@.apps-side-menu .apps-container .app-item.active div,\n.apps-side-menu .apps-container .app-item.active:hover div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu div.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover div.sc-tok-apps-side-menu{color:var(--asm-app-text-active)}/*!@.apps-side-menu .apps-container .app-item.active .app-icon,\n.apps-side-menu .apps-container .app-item.active:hover .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-active)}/*!@.apps-side-menu .apps-container .app-item.active .app-icon div,\n.apps-side-menu .apps-container .app-item.active:hover .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-active)}/*!@.apps-side-menu .apps-container .app-item.disabled div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{color:var(--asm-app-text-disabled)}/*!@.apps-side-menu .apps-container .app-item.disabled .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-disabled)}/*!@.apps-side-menu .apps-container .app-item.disabled .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-disabled)}/*!@.apps-side-menu .apps-container .separator div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{width:100%;border-top:1px solid var(--asm-separator)}@media (max-width: 600px){/*!@.apps-side-menu*/.apps-side-menu.sc-tok-apps-side-menu{width:var(--apps-side-menu-mobile-width);padding:16px 0;font-size:0.625rem}/*!@.apps-side-menu .logo img*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu img.sc-tok-apps-side-menu{width:36px}/*!@.apps-side-menu .apps-container .app-item,\n  .apps-side-menu .apps-container .separator*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu{padding:7px 0}/*!@.apps-side-menu .apps-container*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu{margin-top:34px}/*!@.apps-side-menu .apps-container .app-item .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{width:38px;height:38px;padding:5px;margin-bottom:2px}}/*!@.apps-side-menu.footer-fixed*/.apps-side-menu.footer-fixed.sc-tok-apps-side-menu{bottom:var(--footer-height)}";
+const appsSideMenuCss = "/*!@**/*.sc-tok-apps-side-menu{-webkit-box-sizing:border-box;box-sizing:border-box}/*!@.apps-side-menu*/.apps-side-menu.sc-tok-apps-side-menu{position:fixed;top:0;left:0;bottom:0;width:var(--apps-side-menu-width);background-color:var(--asm-bg);z-index:1000;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:start;justify-content:flex-start;-ms-flex-align:center;align-items:center;padding:30px 0;font-size:0.875rem}/*!@.apps-side-menu .logo*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu{text-decoration:none;cursor:pointer}/*!@.apps-side-menu .logo img*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu img.sc-tok-apps-side-menu{width:67px}/*!@.apps-side-menu .apps-container*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu{width:100%;margin-top:46px;overflow-y:auto}/*!@.apps-side-menu .apps-container .app-item,\n.apps-side-menu .apps-container .separator*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu{width:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;padding:8px 0}/*!@.apps-side-menu .apps-container .app-item*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu{color:var(--asm-app-text);text-decoration:none;cursor:pointer}/*!@.apps-side-menu .apps-container .app-item.active,\n.apps-side-menu .apps-container .app-item.disabled*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu{cursor:default}/*!@.apps-side-menu .apps-container .app-item.disabled*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu{color:var(--grey-dark)}/*!@.apps-side-menu .apps-container .app-item .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{border-radius:4px;width:42px;height:42px;padding:6px;margin-bottom:4px;background-color:var(--asm-app-bg)}/*!@.apps-side-menu .apps-container .app-item .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{height:100%;width:100%;background-color:var(--asm-app-text)}/*!@.apps-side-menu .apps-container .app-item:hover div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover div.sc-tok-apps-side-menu{color:var(--asm-app-text-hover)}/*!@.apps-side-menu .apps-container .app-item:hover .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-hover)}/*!@.apps-side-menu .apps-container .app-item:hover .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-hover)}/*!@.apps-side-menu .apps-container .app-item.active div,\n.apps-side-menu .apps-container .app-item.active:hover div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu div.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover div.sc-tok-apps-side-menu{color:var(--asm-app-text-active)}/*!@.apps-side-menu .apps-container .app-item.active .app-icon,\n.apps-side-menu .apps-container .app-item.active:hover .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-active)}/*!@.apps-side-menu .apps-container .app-item.active .app-icon div,\n.apps-side-menu .apps-container .app-item.active:hover .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.active.sc-tok-apps-side-menu:hover .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-active)}/*!@.apps-side-menu .apps-container .app-item.disabled div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{color:var(--asm-app-text-disabled)}/*!@.apps-side-menu .apps-container .app-item.disabled .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{background-color:var(--asm-app-bg-disabled)}/*!@.apps-side-menu .apps-container .app-item.disabled .app-icon div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.disabled.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{background-color:var(--asm-app-text-disabled)}/*!@.apps-side-menu .apps-container .separator div*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu div.sc-tok-apps-side-menu{width:100%;border-top:1px solid var(--asm-separator)}@media (max-width: 600px){/*!@.apps-side-menu*/.apps-side-menu.sc-tok-apps-side-menu{width:var(--apps-side-menu-mobile-width);padding:16px 0;font-size:0.625rem}/*!@.apps-side-menu .logo img*/.apps-side-menu.sc-tok-apps-side-menu .logo.sc-tok-apps-side-menu img.sc-tok-apps-side-menu{width:47px}/*!@.apps-side-menu .apps-container .app-item,\n  .apps-side-menu .apps-container .separator*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu,.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .separator.sc-tok-apps-side-menu{padding:7px 0}/*!@.apps-side-menu .apps-container*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu{margin-top:34px}/*!@.apps-side-menu .apps-container .app-item .app-icon*/.apps-side-menu.sc-tok-apps-side-menu .apps-container.sc-tok-apps-side-menu .app-item.sc-tok-apps-side-menu .app-icon.sc-tok-apps-side-menu{width:38px;height:38px;padding:5px;margin-bottom:2px}}";
 
 const appSort = (a, b) => a.position - b.position;
 const Separator = () => (h("div", { class: 'separator' }, h("div", null)));
@@ -5361,12 +5362,12 @@ const AppItem = ({ title, icon, active, url, }) => (h("a", { class: {
 class AppsSideMenu {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.appsSideMenu = createEvent(this, "appsSideMenu", 7);
         this.apps = [];
-        this.isFooterFixed = false;
         this.showDisabled = true;
     }
-    async footerFixed(fixed) {
-        this.isFooterFixed = fixed;
+    connectedCallback() {
+        this.appsSideMenu.emit();
     }
     componentWillLoad() {
         fetch(TILES_URL)
@@ -5384,7 +5385,6 @@ class AppsSideMenu {
         const logo = this.common && this.common.logo;
         return (h("div", { class: {
                 'apps-side-menu': true,
-                'footer-fixed': this.isFooterFixed,
             } }, logo && (h("a", { href: logo.caption, class: 'logo', title: logo.name }, h("img", { alt: logo.alternativeText, src: `${IMAGE_BASE_URL}${logo.url}` }))), h("div", { class: 'apps-container' }, this.apps.sort(appSort).map(app => app.separator
             ? h(Separator, null)
             : h(AppItem, Object.assign({}, app)))), h("div", { class: 'profile-container' })));
@@ -5396,9 +5396,7 @@ class AppsSideMenu {
         "$members$": {
             "showDisabled": [4, "show-disabled"],
             "apps": [32],
-            "common": [32],
-            "isFooterFixed": [32],
-            "footerFixed": [64]
+            "common": [32]
         },
         "$listeners$": undefined,
         "$lazyBundleId$": "-",
@@ -5426,7 +5424,7 @@ class Content {
     }; }
 }
 
-const footerCss = "/*!@**/*.sc-tok-footer{-webkit-box-sizing:border-box;box-sizing:border-box}/*!@.footer*/.footer.sc-tok-footer{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:center;align-items:center;padding:0 20px;min-height:var(--footer-height);max-height:var(--footer-height);background-color:var(--panel-primary-color);width:100%;color:#DDD;font-size:.8rem}/*!@.footer.fixed*/.footer.fixed.sc-tok-footer{position:fixed;bottom:0;left:0;right:0}/*!@.footer .legend*/.footer.sc-tok-footer .legend.sc-tok-footer{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}/*!@.social*/.social.sc-tok-footer{display:-ms-flexbox;display:flex}/*!@.social a*/.social.sc-tok-footer a.sc-tok-footer{display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;height:var(--footer-height);width:var(--footer-height)}/*!@.social a span*/.social.sc-tok-footer a.sc-tok-footer span.sc-tok-footer{text-align:center}/*!@.social a svg*/.social.sc-tok-footer a.sc-tok-footer svg.sc-tok-footer{width:60%;height:60%;fill:#DDD}/*!@.social a:hover svg*/.social.sc-tok-footer a.sc-tok-footer:hover svg.sc-tok-footer{fill:#BBB}";
+const footerCss = "/*!@**/*.sc-tok-footer{-webkit-box-sizing:border-box;box-sizing:border-box}/*!@.footer*/.footer.sc-tok-footer{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:start;align-items:flex-start;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:60px 20px 30px 20px;background-color:var(--main-bg);width:100%}/*!@.footer.apps-side-menu*/.footer.apps-side-menu.sc-tok-footer{left:var(--apps-side-menu-width)}/*!@.footer .copy*/.footer.sc-tok-footer .copy.sc-tok-footer{padding:0 70px}/*!@.footer .copy img*/.footer.sc-tok-footer .copy.sc-tok-footer img.sc-tok-footer{width:200px}/*!@.footer .copy p*/.footer.sc-tok-footer .copy.sc-tok-footer p.sc-tok-footer{color:var(--grey-dark);font-size:0.875rem}/*!@.footer .sections*/.footer.sc-tok-footer .sections.sc-tok-footer{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-positive:1;flex-grow:1}/*!@.footer .sections .section*/.footer.sc-tok-footer .sections.sc-tok-footer .section.sc-tok-footer{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-positive:1;flex-grow:1;padding:0 30px}/*!@.footer .sections .section h3*/.footer.sc-tok-footer .sections.sc-tok-footer .section.sc-tok-footer h3.sc-tok-footer{color:var(--text);font-size:1.125rem;line-height:1.3125rem;margin:0.4375rem 0}/*!@.footer .sections .section a*/.footer.sc-tok-footer .sections.sc-tok-footer .section.sc-tok-footer a.sc-tok-footer{color:var(--grey-dark);font-size:0.875rem;line-height:1rem;margin:0.4375rem 0;text-decoration:none;cursor:pointer}/*!@.footer .sections .section a:hover*/.footer.sc-tok-footer .sections.sc-tok-footer .section.sc-tok-footer a.sc-tok-footer:hover{color:var(--grey-light)}@media (max-width: 1200px){/*!@.footer .copy*/.footer.sc-tok-footer .copy.sc-tok-footer{padding:0 20px}/*!@.footer .sections .section*/.footer.sc-tok-footer .sections.sc-tok-footer .section.sc-tok-footer{padding:0 10px}}@media (max-width: 900px){/*!@.footer*/.footer.sc-tok-footer{-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center}/*!@.footer .sections*/.footer.sc-tok-footer .sections.sc-tok-footer{width:100%;padding-left:20px}}@media (max-width: 600px){/*!@.footer*/.footer.sc-tok-footer{padding:60px 20px 20px 20px}/*!@.footer.apps-side-menu*/.footer.apps-side-menu.sc-tok-footer{left:var(--apps-side-menu-mobile-width)}/*!@.footer .sections*/.footer.sc-tok-footer .sections.sc-tok-footer{-ms-flex-wrap:wrap;flex-wrap:wrap}/*!@.footer .sections .section*/.footer.sc-tok-footer .sections.sc-tok-footer .section.sc-tok-footer{width:50%}}";
 
 const facebookLogo = `<svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 10h-2v2h2v6h3v-6h1.82l.18-2h-2v-.833c0-.478.096-.667.558-.667h1.442v-2.5h-2.404c-1.798 0-2.596.792-2.596 2.308v1.692z"/></svg>`;
 const twitterLogo = `<svg viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.5 8.778c-.441.196-.916.328-1.414.388.509-.305.898-.787 1.083-1.362-.476.282-1.003.487-1.564.597-.448-.479-1.089-.778-1.796-.778-1.59 0-2.758 1.483-2.399 3.023-2.045-.103-3.86-1.083-5.074-2.572-.645 1.106-.334 2.554.762 3.287-.403-.013-.782-.124-1.114-.308-.027 1.14.791 2.207 1.975 2.445-.346.094-.726.116-1.112.042.313.978 1.224 1.689 2.3 1.709-1.037.812-2.34 1.175-3.647 1.021 1.09.699 2.383 1.106 3.773 1.106 4.572 0 7.154-3.861 6.998-7.324.482-.346.899-.78 1.229-1.274z"/></svg>`;
@@ -5463,26 +5461,37 @@ const defaultSocial = [
 class Footer {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        this.footerFixed = createEvent(this, "footerFixed", 7);
-        this.fixed = false;
         this.social = defaultSocial;
     }
-    connectedCallback() {
-        this.footerFixed.emit(this.fixed);
+    async appsSideMenu() {
+        this.hasAppsSideMenu = true;
+    }
+    componentWillLoad() {
+        fetch(COMMON_FOOTER_URL)
+            .then((response) => response.json())
+            .then((response) => {
+            this.footer = Object.assign({}, response);
+        });
     }
     render() {
+        if (!this.footer) {
+            return null;
+        }
+        const { logo, copy, section, } = this.footer;
         return (h("div", { class: {
                 footer: true,
-                fixed: this.fixed,
-            } }, h("span", { class: 'legend', title: '\u00A9 2020 Tokenizer Investment Banking Blockchain. All Right Reserved. Powered by Defi Ventures' }, "\u00A9 2020 Tokenizer Investment Banking Blockchain. All Right Reserved. Powered by Defi Ventures"), h("div", { class: 'social' }, this.social.map(social => (h("a", { href: social.href, title: social.name }, h("span", { innerHTML: social.logo })))))));
+                'apps-side-menu': this.hasAppsSideMenu,
+            } }, h("div", { class: 'copy' }, h("img", { alt: logo.alternativeText, src: `${IMAGE_BASE_URL}${logo.url}` }), h("p", null, copy)), h("div", { class: 'sections' }, section.sort((a, b) => a.position - b.position).map(({ title, link }) => (h("div", { class: 'section' }, h("h3", null, title), link.sort((a, b) => a.position - b.position).map(({ url, title }) => (h("a", { href: url }, title)))))))));
     }
     static get style() { return footerCss; }
     static get cmpMeta() { return {
         "$flags$": 9,
         "$tagName$": "tok-footer",
         "$members$": {
-            "fixed": [4],
-            "social": [16]
+            "social": [16],
+            "footer": [32],
+            "hasAppsSideMenu": [32],
+            "appsSideMenu": [64]
         },
         "$listeners$": undefined,
         "$lazyBundleId$": "-",
@@ -5568,20 +5577,13 @@ const mainCss = "tok-main>div{overflow-y:auto;position:absolute;display:-ms-flex
 class Main {
     constructor(hostRef) {
         registerInstance(this, hostRef);
-        this.footerFixed = false;
+        this.hasAppsSideMenu = false;
         this.hasHeader = false;
-        this.hasAppsSideMenu = true;
     }
-    footerFixedHandler(fixed) {
-        this.footerFixed = fixed.detail;
-        const sideMenu = document.querySelector('tok-side-menu');
-        if (sideMenu) {
-            sideMenu.footerFixed(fixed.detail);
-        }
-        const appsSideMenu = document.querySelector('tok-apps-side-menu');
-        if (appsSideMenu) {
-            appsSideMenu.footerFixed(fixed.detail);
-        }
+    sideMenuHandler() {
+        this.hasAppsSideMenu = true;
+        const footer = document.querySelector('tok-footer');
+        footer.appsSideMenu();
     }
     sideMenuOpenHandler(open) {
         const sideMenu = document.querySelector('tok-side-menu');
@@ -5591,7 +5593,6 @@ class Main {
     }
     render() {
         return (h("div", { class: {
-                'footer-fixed': this.footerFixed,
                 'with-header': this.hasHeader,
                 'with-apps-side-menu': this.hasAppsSideMenu,
             } }, h("slot", null)));
@@ -5602,10 +5603,9 @@ class Main {
         "$tagName$": "tok-main",
         "$members$": {
             "hasHeader": [4, "has-header"],
-            "hasAppsSideMenu": [4, "has-apps-side-menu"],
-            "footerFixed": [32]
+            "hasAppsSideMenu": [32]
         },
-        "$listeners$": [[0, "footerFixed", "footerFixedHandler"], [0, "sideMenuOpen", "sideMenuOpenHandler"]],
+        "$listeners$": [[0, "appsSideMenu", "sideMenuHandler"], [0, "sideMenuOpen", "sideMenuOpenHandler"]],
         "$lazyBundleId$": "-",
         "$attrsToReflect$": []
     }; }

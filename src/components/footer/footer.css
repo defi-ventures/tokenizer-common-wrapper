@@ -6,44 +6,98 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  min-height: var(--footer-height);
-  max-height: var(--footer-height);
-  background-color: var(--panel-primary-color);
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 60px 20px 30px 20px;
+  background-color: var(--main-bg);
   width: 100%;
-  color: #DDD;
-  font-size: .8rem;
 }
-.footer.fixed {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
+.footer.apps-side-menu {
+  left: var(--apps-side-menu-width);
 }
-.footer .legend {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+
+.footer .copy {
+  padding: 0 70px;
 }
-.social {
+
+.footer .copy img {
+  width: 200px;
+}
+
+.footer .copy p {
+  color: var(--grey-dark);
+  font-size: 0.875rem;
+}
+
+.footer .sections {
   display: flex;
+  flex-direction: row;
+  flex-grow: 1;
 }
-.social a {
+
+.footer .sections .section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: var(--footer-height);
-  width: var(--footer-height);
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0 30px;
 }
-.social a span {
-  text-align: center;
+
+.footer .sections .section h3 {
+  color: var(--text);
+  font-size: 1.125rem;
+  line-height: 1.3125rem;
+  margin: 0.4375rem 0;
 }
-.social a svg {
-  width: 60%;
-  height: 60%;
-  fill: #DDD;
+
+.footer .sections .section a {
+  color: var(--grey-dark);
+  font-size: 0.875rem;
+  line-height: 1rem;
+  margin: 0.4375rem 0;
+  text-decoration: none;
+  cursor: pointer;
 }
-.social a:hover svg {
-  fill: #BBB;
+
+.footer .sections .section a:hover {
+  color: var(--grey-light);
+}
+
+@media(max-width: 1200px) {
+  .footer .copy {
+    padding: 0 20px;
+  }
+
+  .footer .sections .section {
+    padding: 0 10px;
+  }
+}
+
+@media(max-width: 900px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .sections {
+    width: 100%;
+    padding-left: 20px;
+  }
+}
+
+@media(max-width: 600px) {
+  .footer {
+    padding: 60px 20px 20px 20px;
+  }
+
+  .footer.apps-side-menu {
+    left: var(--apps-side-menu-mobile-width);
+  }
+
+  .footer .sections {
+    flex-wrap: wrap;
+  }
+
+  .footer .sections .section {
+    width: 50%;
+  }
 }

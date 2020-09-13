@@ -9,15 +9,20 @@
 
 | Property | Attribute | Description | Type       | Default         |
 | -------- | --------- | ----------- | ---------- | --------------- |
-| `fixed`  | `fixed`   |             | `boolean`  | `false`         |
 | `social` | --        |             | `Social[]` | `defaultSocial` |
 
 
-## Events
+## Methods
 
-| Event         | Description | Type                   |
-| ------------- | ----------- | ---------------------- |
-| `footerFixed` |             | `CustomEvent<boolean>` |
+### `appsSideMenu() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ----------------------------------------------

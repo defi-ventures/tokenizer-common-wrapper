@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property          | Attribute            | Description | Type      | Default |
-| ----------------- | -------------------- | ----------- | --------- | ------- |
-| `hasAppsSideMenu` | `has-apps-side-menu` |             | `boolean` | `true`  |
-| `hasHeader`       | `has-header`         |             | `boolean` | `false` |
+| Property    | Attribute    | Description | Type      | Default |
+| ----------- | ------------ | ----------- | --------- | ------- |
+| `hasHeader` | `has-header` |             | `boolean` | `false` |
 
 
 ----------------------------------------------

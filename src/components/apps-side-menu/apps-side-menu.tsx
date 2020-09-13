@@ -1,4 +1,4 @@
-import { Component, FunctionalComponent, h, State, Method, Prop } from '@stencil/core';
+import { Component, FunctionalComponent, h, State, Event, Prop, EventEmitter } from '@stencil/core';
 import { TILES_URL, COMMON_ASM_URL, IMAGE_BASE_URL } from '../../url-mapping';
 
 type App = {
@@ -67,13 +67,12 @@ const AppItem: FunctionalComponent<App> = ({
 export class AppsSideMenu {
   @State() apps: App[] = [];
   @State() common: CommonAppsSideMenu;
-  @State() isFooterFixed = false;
+  @Event() appsSideMenu: EventEmitter<void>;
 
   @Prop() showDisabled = true;
 
-  @Method()
-  async footerFixed(fixed: boolean) {
-    this.isFooterFixed = fixed;
+  connectedCallback() {
+    this.appsSideMenu.emit();
   }
 
   componentWillLoad() {
@@ -97,7 +96,6 @@ export class AppsSideMenu {
       <div
         class={{
           'apps-side-menu': true,
-          'footer-fixed': this.isFooterFixed,
         }}
       >
         { logo && (

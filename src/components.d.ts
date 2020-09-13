@@ -13,13 +13,12 @@ export namespace Components {
         "apps": App[];
     }
     interface TokAppsSideMenu {
-        "footerFixed": (fixed: boolean) => Promise<void>;
         "showDisabled": boolean;
     }
     interface TokContent {
     }
     interface TokFooter {
-        "fixed": boolean;
+        "appsSideMenu": () => Promise<void>;
         "social": Social[];
     }
     interface TokHeader {
@@ -29,7 +28,6 @@ export namespace Components {
         "sideMenu": boolean;
     }
     interface TokMain {
-        "hasAppsSideMenu": boolean;
         "hasHeader": boolean;
     }
     interface TokSideMenu {
@@ -96,13 +94,12 @@ declare namespace LocalJSX {
         "onClose"?: (event: CustomEvent<void>) => void;
     }
     interface TokAppsSideMenu {
+        "onAppsSideMenu"?: (event: CustomEvent<void>) => void;
         "showDisabled"?: boolean;
     }
     interface TokContent {
     }
     interface TokFooter {
-        "fixed"?: boolean;
-        "onFooterFixed"?: (event: CustomEvent<boolean>) => void;
         "social"?: Social[];
     }
     interface TokHeader {
@@ -113,7 +110,6 @@ declare namespace LocalJSX {
         "sideMenu"?: boolean;
     }
     interface TokMain {
-        "hasAppsSideMenu"?: boolean;
         "hasHeader"?: boolean;
     }
     interface TokSideMenu {

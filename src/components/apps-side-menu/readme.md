@@ -12,17 +12,11 @@
 | `showDisabled` | `show-disabled` |             | `boolean` | `true`  |
 
 
-## Methods
+## Events
 
-### `footerFixed(fixed: boolean) => Promise<void>`
-
-
-
-#### Returns
-
-Type: `Promise<void>`
-
-
+| Event          | Description | Type                |
+| -------------- | ----------- | ------------------- |
+| `appsSideMenu` |             | `CustomEvent<void>` |
 
 
 ----------------------------------------------

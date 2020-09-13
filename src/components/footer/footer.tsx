@@ -1,4 +1,29 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, State, Method } from '@stencil/core';
+
+import { COMMON_FOOTER_URL, IMAGE_BASE_URL } from '../../url-mapping';
+
+type CommonFooterLink = {
+  position: number,
+  url: string,
+  title: string,
+}
+
+type CommonFooterSection = {
+  title: string,
+  position: number,
+  link: CommonFooterLink[],
+};
+
+type CommonFooter = {
+  copy: string,
+  logo: {
+    name: string,
+    alternativeText: string,
+    caption: string,
+    url: string,
+  },
+  section: CommonFooterSection[],
+};
 
 export type Social = {
   name: string,
@@ -46,34 +71,59 @@ const defaultSocial: Social[] = [
   shadow: true
 })
 export class Footer {
-  @Prop() fixed = false;
+  @State() footer: CommonFooter;
+  @State() hasAppsSideMenu: boolean;
   @Prop() social: Social[] = defaultSocial;
 
-  @Event() footerFixed: EventEmitter<boolean>;
+  @Method()
+  async appsSideMenu() {
+    this.hasAppsSideMenu = true;
+  }
 
-  connectedCallback() {
-    this.footerFixed.emit(this.fixed);
+  componentWillLoad() {
+    fetch(COMMON_FOOTER_URL)
+      .then((response: Response) => response.json())
+      .then((response: CommonFooter) => {
+        this.footer = { ...response };
+      });
   }
 
   render() {
+    if (!this.footer) {
+      return null;
+    }
+
+    const {
+      logo,
+      copy,
+      section,
+    } = this.footer;
+
     return (
       <div
         class={{
           footer: true,
-          fixed: this.fixed,
+          'apps-side-menu': this.hasAppsSideMenu,
         }}
       >
-        <span
-          class='legend'
-          title='© 2020 Tokenizer Investment Banking Blockchain. All Right Reserved. Powered by Defi Ventures'
-        >
-          © 2020 Tokenizer Investment Banking Blockchain. All Right Reserved. Powered by Defi Ventures
-        </span>
-        <div class='social'>
-          { this.social.map(social => (
-            <a href={ social.href } title={ social.name }><span innerHTML={ social.logo } /></a>
+        <div class='copy'>
+          <img
+            alt={ logo.alternativeText }
+            src={ `${IMAGE_BASE_URL}${logo.url}` }
+          />
+          <p>{ copy }</p>
+        </div>
+        <div class='sections'>
+          { section.sort((a, b) => a.position - b.position).map(({title, link}) => (
+            <div class='section'>
+              <h3>{ title }</h3>
+              { link.sort((a, b) => a.position - b.position).map(({url, title}) => (
+                <a href={ url }>{ title }</a>
+              ))}
+            </div>
           ))}
         </div>
+        
       </div>
     );
   }

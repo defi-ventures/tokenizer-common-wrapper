@@ -1,0 +1,25 @@
+tok-main>div {
+  overflow-y: auto;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+tok-main>div.footer-fixed {
+  bottom: var(--footer-height);
+}
+tok-main>div.with-header {
+  top: var(--header-height);
+}
+tok-main>div.with-apps-side-menu {
+  left: var(--apps-side-menu-width);
+}
+
+@media(max-width: 600px) {
+  tok-main>div.with-apps-side-menu {
+    left: var(--apps-side-menu-mobile-width);
+  }
+}

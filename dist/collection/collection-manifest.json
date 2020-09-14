@@ -1,0 +1,18 @@
+{
+  "entries": [
+    "./components/apps-menu/apps-menu.js",
+    "./components/footer/footer.js",
+    "./components/apps-side-menu/apps-side-menu.js",
+    "./components/content/content.js",
+    "./components/header/header.js",
+    "./components/main/main.js",
+    "./components/side-menu/side-menu.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.17.2",
+    "typescriptVersion": "3.9.7"
+  },
+  "collections": [],
+  "bundles": []
+}

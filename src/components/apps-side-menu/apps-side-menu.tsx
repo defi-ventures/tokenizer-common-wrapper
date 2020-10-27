@@ -5,6 +5,7 @@ type App = {
   position: number,
   separator: boolean,
   active: boolean,
+  current: boolean,
   title: string,
   url: string,
   icon: {
@@ -37,15 +38,16 @@ const AppItem: FunctionalComponent<App> = ({
   title,
   icon,
   active,
+  current,
   url,
 }) => (
   <a 
     class={{
       'app-item': true,
       'disabled': !active,
-      'active': url.includes(window.location.host),
+      'active': current,
     }}
-    href={ url.includes(window.location.host) ? '#' : url }
+    href={ current ? '#' : url }
   >
     <div class='app-icon'>
       <div
@@ -91,7 +93,14 @@ export class AppsSideMenu {
 
   render() {
     const logo = this.common && this.common.logo;
-
+    const apps = this.apps.sort(appSort);
+    const current = apps
+      .map(({ url }) => window.location.href.includes(url) ? url.length : 0)
+      .reduce(
+        (match, length, index) => length > match.length ? {length, index} : match,
+        {length: 0, index: 0},
+      )
+      .index;
     return (
       <div
         class={{
@@ -111,10 +120,11 @@ export class AppsSideMenu {
           </a>
         )}
         <div class='apps-container'>
-          { this.apps.sort(appSort).map(app => app.separator
+          { this.apps.sort(appSort).map((app, index) => (
+            app.separator
             ? <Separator />
-            : <AppItem {...app}/>  
-          )}
+            : <AppItem {...app} current={index === current}/>
+          ))}
         </div>
         <div class='profile-container'>
 

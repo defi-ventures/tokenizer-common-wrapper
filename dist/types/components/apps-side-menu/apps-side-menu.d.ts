@@ -3,6 +3,7 @@ declare type App = {
     position: number;
     separator: boolean;
     active: boolean;
+    current: boolean;
     title: string;
     url: string;
     icon: {

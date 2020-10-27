@@ -3,11 +3,11 @@ import { TILES_URL, COMMON_ASM_URL, IMAGE_BASE_URL } from '../../url-mapping';
 const appSort = (a, b) => a.position - b.position;
 const Separator = () => (h("div", { class: 'separator' },
     h("div", null)));
-const AppItem = ({ title, icon, active, url, }) => (h("a", { class: {
+const AppItem = ({ title, icon, active, current, url, }) => (h("a", { class: {
         'app-item': true,
         'disabled': !active,
-        'active': url.includes(window.location.host),
-    }, href: url.includes(window.location.host) ? '#' : url },
+        'active': current,
+    }, href: current ? '#' : url },
     h("div", { class: 'app-icon' },
         h("div", { style: {
                 'mask': `url(${IMAGE_BASE_URL}${icon.url}) center center / contain no-repeat`,
@@ -36,14 +36,19 @@ export class AppsSideMenu {
     }
     render() {
         const logo = this.common && this.common.logo;
+        const apps = this.apps.sort(appSort);
+        const current = apps
+            .map(({ url }) => window.location.href.includes(url) ? url.length : 0)
+            .reduce((match, length, index) => length > match.length ? { length, index } : match, { length: 0, index: 0 })
+            .index;
         return (h("div", { class: {
                 'apps-side-menu': true,
             } },
             logo && (h("a", { href: logo.caption, class: 'logo', title: logo.name },
                 h("img", { alt: logo.alternativeText, src: `${IMAGE_BASE_URL}${logo.url}` }))),
-            h("div", { class: 'apps-container' }, this.apps.sort(appSort).map(app => app.separator
+            h("div", { class: 'apps-container' }, this.apps.sort(appSort).map((app, index) => (app.separator
                 ? h(Separator, null)
-                : h(AppItem, Object.assign({}, app)))),
+                : h(AppItem, Object.assign({}, app, { current: index === current }))))),
             h("div", { class: 'profile-container' })));
     }
     static get is() { return "tok-apps-side-menu"; }

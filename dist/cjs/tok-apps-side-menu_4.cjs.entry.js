@@ -14,11 +14,11 @@ const appsSideMenuCss = "*{-webkit-box-sizing:border-box;box-sizing:border-box}.
 
 const appSort = (a, b) => a.position - b.position;
 const Separator = () => (index.h("div", { class: 'separator' }, index.h("div", null)));
-const AppItem = ({ title, icon, active, url, }) => (index.h("a", { class: {
+const AppItem = ({ title, icon, active, current, url, }) => (index.h("a", { class: {
         'app-item': true,
         'disabled': !active,
-        'active': url.includes(window.location.host),
-    }, href: url.includes(window.location.host) ? '#' : url }, index.h("div", { class: 'app-icon' }, index.h("div", { style: {
+        'active': current,
+    }, href: current ? '#' : url }, index.h("div", { class: 'app-icon' }, index.h("div", { style: {
         'mask': `url(${IMAGE_BASE_URL}${icon.url}) center center / contain no-repeat`,
         '-webkit-mask': `url(${IMAGE_BASE_URL}${icon.url}) center center / contain no-repeat`,
     } })), index.h("div", { class: 'app-title' }, title)));
@@ -46,11 +46,16 @@ const AppsSideMenu = class {
     }
     render() {
         const logo = this.common && this.common.logo;
+        const apps = this.apps.sort(appSort);
+        const current = apps
+            .map(({ url }) => window.location.href.includes(url) ? url.length : 0)
+            .reduce((match, length, index) => length > match.length ? { length, index } : match, { length: 0, index: 0 })
+            .index;
         return (index.h("div", { class: {
                 'apps-side-menu': true,
-            } }, logo && (index.h("a", { href: logo.caption, class: 'logo', title: logo.name }, index.h("img", { alt: logo.alternativeText, src: `${IMAGE_BASE_URL}${logo.url}` }))), index.h("div", { class: 'apps-container' }, this.apps.sort(appSort).map(app => app.separator
+            } }, logo && (index.h("a", { href: logo.caption, class: 'logo', title: logo.name }, index.h("img", { alt: logo.alternativeText, src: `${IMAGE_BASE_URL}${logo.url}` }))), index.h("div", { class: 'apps-container' }, this.apps.sort(appSort).map((app, index$1) => (app.separator
             ? index.h(Separator, null)
-            : index.h(AppItem, Object.assign({}, app)))), index.h("div", { class: 'profile-container' })));
+            : index.h(AppItem, Object.assign({}, app, { current: index$1 === current }))))), index.h("div", { class: 'profile-container' })));
     }
 };
 AppsSideMenu.style = appsSideMenuCss;
